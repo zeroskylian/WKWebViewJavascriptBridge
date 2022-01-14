@@ -8,7 +8,8 @@ Pod::Spec.new do |s|
   s.homepage         = 'https://github.com/Lision/WKWebViewJavascriptBridge'
   s.source           = { :git => 'https://github.com/Lision/WKWebViewJavascriptBridge.git', :tag => s.version.to_s }
   s.source_files     = 'WKWebViewJavascriptBridge/*.{h,swift}'
-  s.platform         = :ios, '9.0'
+  s.ios.deployment_target = "9.0"
+  s.osx.deployment_target = "10.14"
   s.requires_arc     = true
   s.swift_version    = '5.0'
 end

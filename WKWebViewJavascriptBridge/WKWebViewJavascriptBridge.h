@@ -6,7 +6,7 @@
 //  Copyright © 2018年 Lision. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
 
 //! Project version number for WKWebViewJavascriptBridge.
 FOUNDATION_EXPORT double WKWebViewJavascriptBridgeVersionNumber;
