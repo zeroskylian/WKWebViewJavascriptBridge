@@ -11,9 +11,13 @@ import WebKit
 import WKWebViewJavascriptBridge
 
 class ViewController: UIViewController {
+    
     let webView = WKWebView(frame: CGRect(), configuration: WKWebViewConfiguration())
+    
     var bridge: WKWebViewJavascriptBridge!
+    
     let callbackBtn = UIButton(type: .custom)
+    
     let reloadBtn = UIButton(type: .custom)
     
     override func viewDidLoad() {
@@ -52,6 +56,7 @@ class ViewController: UIViewController {
     }
     
     func loadDemoPage() {
+        
         enum LoadDemoPageError: Error {
             case nilPath
         }

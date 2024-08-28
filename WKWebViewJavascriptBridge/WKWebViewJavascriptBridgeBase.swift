@@ -9,19 +9,21 @@
 import Foundation
 
 protocol WKWebViewJavascriptBridgeBaseDelegate: AnyObject {
+    
     typealias CompletionHandler = ((Any?, Error?) -> Void)?
     
     func evaluateJavascript(javascript: String, completion: CompletionHandler)
 }
 
 extension WKWebViewJavascriptBridgeBaseDelegate {
+    
     func evaluateJavascript(javascript: String) {
         evaluateJavascript(javascript: javascript, completion: nil)
     }
 }
 
-@available(iOS 9.0, *)
 public class WKWebViewJavascriptBridgeBase: NSObject {
+    
     var isLogEnable = false
     
     public typealias Callback = (_ responseData: Any?) -> Void

@@ -9,7 +9,6 @@
 import Foundation
 import WebKit
 
-@available(iOS 9.0, *)
 public class WKWebViewJavascriptBridge: NSObject {
     public var isLogEnable: Bool {
         get {
@@ -78,13 +77,17 @@ public class WKWebViewJavascriptBridge: NSObject {
     }
 }
 
+// MARK: - WKWebViewJavascriptBridgeBaseDelegate
 extension WKWebViewJavascriptBridge: WKWebViewJavascriptBridgeBaseDelegate {
+    
     func evaluateJavascript(javascript: String, completion: CompletionHandler) {
         webView?.evaluateJavaScript(javascript, completionHandler: completion)
     }
 }
 
+// MARK: - WKScriptMessageHandler
 extension WKWebViewJavascriptBridge: WKScriptMessageHandler {
+    
     public func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
         if message.name == iOS_Native_InjectJavascript {
             base.injectJavascriptFile()
@@ -97,6 +100,7 @@ extension WKWebViewJavascriptBridge: WKScriptMessageHandler {
 }
 
 class LeakAvoider: NSObject {
+    
     weak var delegate: WKScriptMessageHandler?
     
     init(delegate: WKScriptMessageHandler) {
@@ -105,7 +109,9 @@ class LeakAvoider: NSObject {
     }
 }
 
+// MARK: - WKScriptMessageHandler
 extension LeakAvoider: WKScriptMessageHandler {
+    
     func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
         delegate?.userContentController(userContentController, didReceive: message)
     }
