@@ -167,13 +167,11 @@ public class WKWebViewJavascriptBridgeBase: NSObject {
     
     // MARK: - Log
     private func log<T>(_ message: T, file: String = #file, function: String = #function, line: Int = #line) {
-        #if DEBUG
         guard isLogEnable else {
             return
         }
         
         let fileName = (file as NSString).lastPathComponent
         print("\(fileName):\(line) \(function) | \(message)")
-        #endif
     }
 }
